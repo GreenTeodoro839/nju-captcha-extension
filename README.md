@@ -1,45 +1,44 @@
-# nju-captcha-extension
+# NJU Captcha 油猴脚本
 
-一个极度轻量的验证码识别插件
-
->   **感谢：**[Do1e/NJUcaptcha: 南大统一身份认证验证码（数据集、识别模型、识别服务）](https://github.com/Do1e/NJUcaptcha)提供数据集和思路
->
->   Claude4.5 Opus提供代码😋
->
->   我提供时间和精力来debug（🤣
-
-![屏幕录制 2025-12-03 170107](demo.gif)
-
-南京大学统一身份认证验证码自动识别填充插件。
+一个极度轻量的南京大学统一身份认证验证码自动识别填充脚本。
 
 ## 特性
 
-1.   超轻量模型（量化后仅159kb），响应速度极快
-2.   本地推理
-3.   纯vibe coding，无技术含量
-4.   在单卡1080Ti(11GB)上训练了5min
+- 🚀 超轻量模型（量化后仅 159KB），响应速度极快
+- 🔒 本地 ONNX 推理，无需后端服务器
+- 🔄 自动识别并填充验证码，支持刷新后重新识别
+- 💻 纯 Vibe Coding，在 1080Ti (11GB) 上训练了 5 分钟
 
-## 安装方法
+## 安装
 
-### Chrome / Edge
+### 1. 安装 Tampermonkey
 
-0.   把extension.zip下载好，然后解压缩
+在浏览器中安装 [Tampermonkey](https://www.tampermonkey.net/) 扩展：
+- [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+- [Firefox](https://addons.mozilla.org/firefox/addon/tampermonkey/)
+- [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
 
-1. 打开浏览器，访问 `chrome://extensions/`（Chrome）或 `edge://extensions/`（Edge）
-2. 开启右上角的 **开发者模式**
-3. 点击 **加载已解压的扩展程序**
-4. 选择 `extension` 文件夹
-
-## 使用方法
-
-1. 安装插件后，访问 [南大统一身份认证](https://authserver.nju.edu.cn/authserver/login)
-2. 验证码将自动识别并填充到输入框
+**如果是第一次使用油猴脚本，请在油猴脚本的设置中给足权限，否则可能无法使用**
 
 
+### 2. 安装脚本
 
-## 补充
+点击下方链接直接安装脚本：
 
-在model文件夹下有对模型架构的补充，但是没有把训练代码和脚本贴出，请参考[Do1e/NJUcaptcha: 南大统一身份认证验证码（数据集、识别模型、识别服务）](https://github.com/Do1e/NJUcaptcha) 
+**[点击安装 nju_captcha.user.js](https://raw.githubusercontent.com/yama-lei/nju-captcha-extension/main/nju_captcha.user.js)**
 
+或者手动复制 `nju_captcha.user.js` 内容到 Tampermonkey 新建脚本中。
 
+## 使用
 
+安装后访问南大统一身份认证页面，脚本会自动：
+1. 加载 ONNX 模型（首次加载可能需要几秒）
+2. 识别验证码图片
+3. 自动填充到验证码输入框
+
+点击验证码图片刷新后，脚本会自动重新识别。
+
+## 参考
+
+- 油猴脚本参考：[lyc8503/ddddocr_web](https://github.com/lyc8503/ddddocr_web/blob/master/captcha.user.js)
+- 模型训练参考：[Do1e/NJUcaptcha](https://github.com/Do1e/NJUcaptcha)
